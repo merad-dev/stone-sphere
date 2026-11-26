@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>stone-sphere — لعبة أندرويد | Android Game</title>
+  <meta name="description" content="حمّل لعبة stone-sphere للأندرويد مجاناً (APK). استكشف التحديات الفيزيائية والمهارة في تجربة لعب ممتعة وخفيفة. Download stone-sphere Android game APK." />
+  <meta name="keywords" content="stone-sphere, stone sphere, لعبة أندرويد, تحميل لعبة stone-sphere, Android game APK, merad-dev" />
+  <meta name="author" content="merad-dev" />
+  <meta property="og:title" content="stone-sphere — Android Game" />
+  <meta property="og:description" content="Official page and direct APK download for stone-sphere Android game." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+    }
+    .lang-btn {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .lang-btn:hover { border-color: var(--accent); }
+    .hero {
+      text-align: center;
+      padding: 48px 16px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 28px;
+      font-size: 1.1rem;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0f172a;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+    .btn-secondary:hover { border-color: var(--accent); }
+    .section {
+      margin-top: 48px;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      border-inline-start: 4px solid var(--accent);
+      padding-inline-start: 12px;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .shot-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 8px;
+    }
+    .shot-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .info-box strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">stone-sphere</div>
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">English</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>stone-sphere</h1>
+        <p id="heroDesc">
+          لعبة أندرويد تعتمد على الدقة والتوازن والتحدي. تحكّم بالكرة الحجرية وتجاوز العقبات في تجربة لعب سلسة ومباشرة على هاتفك.
+        </p>
+        <div class="actions">
+          <!-- استبدل الرابط أدناه برابط ملف الـ APK المباشر من قسم Releases عند رفعه -->
+          <a class="btn-primary" id="downloadBtn" href="https://github.com/merad-dev/stone-sphere/releases/latest" target="_blank" rel="noopener">
+            تحميل اللعبة للأندرويد (APK)
+          </a>
+          <a class="btn-secondary" id="repoBtn" href="https://github.com/merad-dev/stone-sphere" target="_blank" rel="noopener">
+            صفحة المشروع على GitHub
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 id="shotsTitle">لقطات من داخل اللعبة</h2>
+        <div class="screenshots-grid">
+          <div class="shot-card">
+            <img src="Screenshots/Screenshot_20261124-071309.png" alt="stone-sphere gameplay screenshot 1" loading="lazy" />
+          </div>
+          <div class="shot-card">
+            <img src="Screenshots/Screenshot_20261124-071317.png" alt="stone-sphere gameplay screenshot 2" loading="lazy" />
+          </div>
+          <div class="shot-card">
+            <img src="Screenshots/Screenshot_20261124-071329.png" alt="stone-sphere gameplay screenshot 3" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 id="detailsTitle">معلومات اللعبة</h2>
+        <div class="info-grid">
+          <div class="info-box">
+            <strong id="platLabel">المنصة</strong>
+            <span id="platVal">أندرويد (Android)</span>
+          </div>
+          <div class="info-box">
+            <strong id="devLabel">المطور</strong>
+            <span>merad-dev</span>
+          </div>
+          <div class="info-box">
+            <strong id="verLabel">التنزيل</strong>
+            <span id="verVal">ملف APK مباشر عبر GitHub Releases</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p id="footerText">© stone-sphere — تطوير merad-dev</p>
+    </footer>
+  </div>
+
+  <script>
+    const content = {
+      ar: {
+        dir: "rtl",
+        btn: "English",
+        heroDesc: "لعبة أندرويد تعتمد على الدقة والتوازن والتحدي. تحكّم بالكرة الحجرية وتجاوز العقبات في تجربة لعب سلسة ومباشرة على هاتفك.",
+        downloadBtn: "تحميل اللعبة للأندرويد (APK)",
+        repoBtn: "صفحة المشروع على GitHub",
+        shotsTitle: "لقطات من داخل اللعبة",
+        detailsTitle: "معلومات اللعبة",
+        platLabel: "المنصة",
+        platVal: "أندرويد (Android)",
+        verLabel: "التنزيل",
+        verVal: "ملف APK مباشر عبر GitHub Releases",
+        footerText: "© stone-sphere — تطوير merad-dev"
+      },
+      en: {
+        dir: "ltr",
+        btn: "العربية",
+        heroDesc: "An Android arcade game focused on precision, balance, and skill. Control the stone sphere and overcome obstacles in a smooth mobile experience.",
+        downloadBtn: "Download for Android (APK)",
+        repoBtn: "View on GitHub",
+        shotsTitle: "In-Game Screenshots",
+        detailsTitle: "Game Details",
+        platLabel: "Platform",
+        platVal: "Android",
+        verLabel: "Download",
+        verVal: "Direct APK via GitHub Releases",
+        footerText: "© stone-sphere — Developed by merad-dev"
+      }
+    };
+
+    let currentLang = "ar";
+
+    function toggleLang() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      const t = content[currentLang];
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = t.dir;
+      document.getElementById("langToggle").textContent = t.btn;
+      document.getElementById("heroDesc").textContent = t.heroDesc;
+      document.getElementById("downloadBtn").textContent = t.downloadBtn;
+      document.getElementById("repoBtn").textContent = t.repoBtn;
+      document.getElementById("shotsTitle").textContent = t.shotsTitle;
+      document.getElementById("detailsTitle").textContent = t.detailsTitle;
+      document.getElementById("platLabel").textContent = t.platLabel;
+      document.getElementById("platVal").textContent = t.platVal;
+      document.getElementById("verLabel").textContent = t.verLabel;
+      document.getElementById("verVal").textContent = t.verVal;
+      document.getElementById("footerText").textContent = t.footerText;
+    }
+  </script>
+</body>
+</html>
