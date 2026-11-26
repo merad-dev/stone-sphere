@@ -3,265 +3,511 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>stone-sphere — لعبة أندرويد | Android Game</title>
-  <meta name="description" content="حمّل لعبة stone-sphere للأندرويد مجاناً (APK). استكشف التحديات الفيزيائية والمهارة في تجربة لعب ممتعة وخفيفة. Download stone-sphere Android game APK." />
-  <meta name="keywords" content="stone-sphere, stone sphere, لعبة أندرويد, تحميل لعبة stone-sphere, Android game APK, merad-dev" />
+  <title>Stone Sphere — لعبة أندرويد | Android Game</title>
+  <meta name="description" content="حمّل لعبة Stone Sphere للأندرويد مجاناً (APK). متوافقة مع 32-bit و 64-bit و Android 6.0 فأحدث. Download Stone Sphere Android game APK." />
+  <meta name="keywords" content="Stone Sphere, stone-sphere, لعبة أندرويد, تحميل لعبة Stone Sphere, Android 6, 32-bit, 64-bit, APK" />
   <meta name="author" content="merad-dev" />
-  <meta property="og:title" content="stone-sphere — Android Game" />
-  <meta property="og:description" content="Official page and direct APK download for stone-sphere Android game." />
-  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-hover: #0284c7;
-      --border: #334155;
+      --ink: #1e2235;
+      --paper: #fcfbf7;
+      --grid: rgba(148, 163, 184, 0.22);
+      --pink: #f7a8b8;
+      --pink-soft: #fde2e8;
+      --yellow: #ffd166;
+      --yellow-soft: #fff3cc;
+      --blue: #8ecae6;
+      --blue-soft: #dff2fb;
+      --green: #95d5b2;
+      --green-soft: #dff5e8;
+      --muted: #4b5563;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 20px;
+      font-family: "Tajawal", "Fredoka", sans-serif;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+      background-size: 26px 26px;
+      padding: 18px 14px 40px;
+      line-height: 1.65;
+      overflow-x: hidden;
     }
-    .container {
-      max-width: 900px;
+
+    .doodle-frame {
+      max-width: 920px;
       margin: 0 auto;
+      background: rgba(252, 251, 247, 0.94);
+      border: 3.5px solid var(--ink);
+      border-radius: 24px;
+      box-shadow: 6px 6px 0px var(--ink);
+      padding: 20px 22px 32px;
+      position: relative;
     }
+
+    .top-zigzag {
+      height: 14px;
+      margin: -20px -22px 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      background:
+        linear-gradient(135deg, var(--pink) 25%, transparent 25%) -14px 0,
+        linear-gradient(225deg, var(--pink) 25%, transparent 25%) -14px 0,
+        linear-gradient(315deg, var(--pink) 25%, transparent 25%),
+        linear-gradient(45deg, var(--pink) 25%, transparent 25%);
+      background-size: 28px 14px;
+      background-color: var(--paper);
+      border-bottom: 3px solid var(--ink);
+    }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0 32px;
-      border-bottom: 1px solid var(--border);
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 16px;
+      border-bottom: 2.5px dashed var(--ink);
     }
-    .brand {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      color: var(--accent);
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .lang-btn {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
+
+    .mini-stone {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green);
+      border: 3px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
+      display: grid;
+      place-items: center;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 700;
       font-size: 0.95rem;
     }
-    .lang-btn:hover { border-color: var(--accent); }
+
+    .brand-title {
+      font-family: "Fredoka", "Tajawal", sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .lang-btn {
+      font-family: "Tajawal", "Fredoka", sans-serif;
+      background: var(--blue);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      padding: 7px 16px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .lang-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .lang-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
     .hero {
       text-align: center;
-      padding: 48px 16px;
+      padding: 34px 10px 26px;
     }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--yellow-soft);
+      border: 2.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
     .hero h1 {
-      font-size: 2.5rem;
+      font-family: "Fredoka", "Tajawal", sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.3rem);
+      line-height: 1.1;
+      color: #2b3a67;
+      text-shadow: 3px 3px 0 var(--pink);
       margin-bottom: 14px;
     }
+
     .hero p {
-      color: var(--muted);
       max-width: 620px;
-      margin: 0 auto 28px;
-      font-size: 1.1rem;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      font-weight: 500;
     }
-    .actions {
+
+    .cta-group {
       display: flex;
-      gap: 12px;
       justify-content: center;
+      gap: 14px;
       flex-wrap: wrap;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #0f172a;
+
+    .btn-play {
+      display: inline-block;
       text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-weight: 700;
+      background: var(--pink);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      padding: 13px 26px;
+      font-weight: 800;
+      font-size: 1.08rem;
+      box-shadow: 4px 4px 0 var(--ink);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .btn-play:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .btn-store {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--yellow);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      padding: 13px 22px;
+      font-weight: 800;
       font-size: 1.05rem;
-      transition: 0.2s;
+      box-shadow: 4px 4px 0 var(--ink);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
-    .btn-primary:hover { background: var(--accent-hover); color: #fff; }
-    .btn-secondary {
-      background: var(--card);
-      color: var(--text);
-      text-decoration: none;
-      padding: 14px 24px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      font-weight: 600;
+
+    .btn-store:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 var(--ink);
     }
-    .btn-secondary:hover { border-color: var(--accent); }
+
     .section {
-      margin-top: 48px;
+      margin-top: 34px;
     }
-    .section h2 {
-      font-size: 1.5rem;
+
+    .section-head {
+      display: inline-block;
+      background: var(--pink-soft);
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      padding: 6px 16px;
+      box-shadow: 3px 3px 0 var(--ink);
       margin-bottom: 18px;
-      border-inline-start: 4px solid var(--accent);
-      padding-inline-start: 12px;
     }
-    .screenshots-grid {
+
+    .section-head.blue { background: var(--blue-soft); }
+    .section-head.yellow { background: var(--yellow-soft); }
+
+    .section-head h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .shots-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
     }
+
     .shot-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 8px;
+      background: #ffffff;
+      border: 3px solid var(--ink);
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: 4px 4px 0 var(--ink);
     }
+
     .shot-card img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
       display: block;
-    }
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-    .info-box {
-      background: var(--card);
-      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 18px;
+      border: 2px solid var(--ink);
     }
-    .info-box strong {
+
+    .stones-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .stone-chip {
+      border: 2.5px solid var(--ink);
+      border-radius: 15px;
+      padding: 12px;
+      text-align: center;
+      font-weight: 800;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    .stone-chip.pebble { background: #eef2f7; }
+    .stone-chip.moss { background: var(--green-soft); }
+    .stone-chip.brick { background: var(--pink-soft); }
+    .stone-chip.ice { background: var(--blue-soft); }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+    }
+
+    .detail-card {
+      background: #ffffff;
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .detail-label {
       display: block;
-      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--muted);
       margin-bottom: 6px;
     }
+
+    .detail-value {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .badge-pill {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 2px solid var(--ink);
+      background: var(--green-soft);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
     footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
+      margin-top: 38px;
+      padding-top: 16px;
+      border-top: 2.5px dashed var(--ink);
       text-align: center;
+      font-weight: 700;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="doodle-frame">
+    <div class="top-zigzag" aria-hidden="true"></div>
+
     <header>
-      <div class="brand">stone-sphere</div>
+      <div class="brand-wrap">
+        <div class="mini-stone" aria-hidden="true">SS</div>
+        <div class="brand-title">Stone Sphere</div>
+      </div>
       <button class="lang-btn" id="langToggle" onclick="toggleLang()">English</button>
     </header>
 
     <main>
       <section class="hero">
-        <h1>stone-sphere</h1>
+        <div class="hero-tag" id="heroTag">اقفز • اجمع العملات • واصمد</div>
+        <h1>Stone Sphere</h1>
         <p id="heroDesc">
-          لعبة أندرويد تعتمد على الدقة والتوازن والتحدي. تحكّم بالكرة الحجرية وتجاوز العقبات في تجربة لعب سلسة ومباشرة على هاتفك.
+          لعبة أركيد برسوميات دفترية مرحة حيث تتحكم بكرة حجرية لتجاوز المنصات وجمع العملات وتحقيق أعلى مسافة على هاتفك.
         </p>
-        <div class="actions">
-          <!-- استبدل الرابط أدناه برابط ملف الـ APK المباشر من قسم Releases عند رفعه -->
-          <a class="btn-primary" id="downloadBtn" href="https://github.com/merad-dev/stone-sphere/releases/latest" target="_blank" rel="noopener">
-            تحميل اللعبة للأندرويد (APK)
+        <div class="cta-group">
+          <a class="btn-play" id="downloadBtn" href="https://github.com/merad-dev/stone-sphere/releases/latest" target="_blank" rel="noopener">
+            تحميل APK للأندرويد
           </a>
-          <a class="btn-secondary" id="repoBtn" href="https://github.com/merad-dev/stone-sphere" target="_blank" rel="noopener">
-            صفحة المشروع على GitHub
+          <a class="btn-store" id="repoBtn" href="https://github.com/merad-dev/stone-sphere" target="_blank" rel="noopener">
+            صفحة GitHub
           </a>
         </div>
       </section>
 
       <section class="section">
-        <h2 id="shotsTitle">لقطات من داخل اللعبة</h2>
-        <div class="screenshots-grid">
+        <div class="section-head">
+          <h2 id="shotsTitle">لقطات من اللعبة</h2>
+        </div>
+        <div class="shots-grid">
           <div class="shot-card">
-            <img src="Screenshots/Screenshot_20261124-071309.png" alt="stone-sphere gameplay screenshot 1" loading="lazy" />
+            <img src="Screenshots/Screenshot_20261124-071309.png" alt="Stone Sphere screenshot 1" loading="lazy" />
           </div>
           <div class="shot-card">
-            <img src="Screenshots/Screenshot_20261124-071317.png" alt="stone-sphere gameplay screenshot 2" loading="lazy" />
+            <img src="Screenshots/Screenshot_20261124-071317.png" alt="Stone Sphere screenshot 2" loading="lazy" />
           </div>
           <div class="shot-card">
-            <img src="Screenshots/Screenshot_20261124-071329.png" alt="stone-sphere gameplay screenshot 3" loading="lazy" />
+            <img src="Screenshots/Screenshot_20261124-071329.png" alt="Stone Sphere screenshot 3" loading="lazy" />
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2 id="detailsTitle">معلومات اللعبة</h2>
-        <div class="info-grid">
-          <div class="info-box">
-            <strong id="platLabel">المنصة</strong>
-            <span id="platVal">أندرويد (Android)</span>
+        <div class="section-head yellow">
+          <h2 id="stonesTitle">شخصيات الكرات والأحجار</h2>
+        </div>
+        <div class="stones-strip">
+          <div class="stone-chip pebble" id="stone1">Pebble</div>
+          <div class="stone-chip moss" id="stone2">Mossy Rock</div>
+          <div class="stone-chip brick" id="stone3">Red Brick</div>
+          <div class="stone-chip ice" id="stone4">Ice Stone</div>
+        </div>
+      </section>
+
+      <section class="section" id="details">
+        <div class="section-head blue">
+          <h2 id="detailsTitle">التفاصيل والتوافق</h2>
+        </div>
+        <div class="details-grid">
+          <div class="detail-card">
+            <span class="detail-label" id="archLabel">معمارية المعالج (ABI)</span>
+            <div class="detail-value" id="archVal">متوافق مع 32-bit و 64-bit</div>
+            <span class="badge-pill" id="archBadge">32-bit + 64-bit</span>
           </div>
-          <div class="info-box">
-            <strong id="devLabel">المطور</strong>
-            <span>merad-dev</span>
+
+          <div class="detail-card">
+            <span class="detail-label" id="osLabel">نظام التشغيل المطلوب</span>
+            <div class="detail-value" id="osVal">Android 6.0 أو أحدث</div>
+            <span class="badge-pill" id="osBadge">Android 6.0+</span>
           </div>
-          <div class="info-box">
-            <strong id="verLabel">التنزيل</strong>
-            <span id="verVal">ملف APK مباشر عبر GitHub Releases</span>
+
+          <div class="detail-card">
+            <span class="detail-label" id="formatLabel">صيغة التثبيت والمنصة</span>
+            <div class="detail-value" id="formatVal">ملف APK مباشر • أندرويد</div>
+            <span class="badge-pill" id="formatBadge">Arcade • APK</span>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-label" id="devLabel">المطور</span>
+            <div class="detail-value">merad-dev</div>
+            <span class="badge-pill" id="devBadge">Stone Sphere</span>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <p id="footerText">© stone-sphere — تطوير merad-dev</p>
+      <p id="footerText">Stone Sphere — صنع بكل شغف بواسطة merad-dev</p>
     </footer>
   </div>
 
   <script>
-    const content = {
+    const i18n = {
       ar: {
         dir: "rtl",
         btn: "English",
-        heroDesc: "لعبة أندرويد تعتمد على الدقة والتوازن والتحدي. تحكّم بالكرة الحجرية وتجاوز العقبات في تجربة لعب سلسة ومباشرة على هاتفك.",
-        downloadBtn: "تحميل اللعبة للأندرويد (APK)",
-        repoBtn: "صفحة المشروع على GitHub",
-        shotsTitle: "لقطات من داخل اللعبة",
-        detailsTitle: "معلومات اللعبة",
-        platLabel: "المنصة",
-        platVal: "أندرويد (Android)",
-        verLabel: "التنزيل",
-        verVal: "ملف APK مباشر عبر GitHub Releases",
-        footerText: "© stone-sphere — تطوير merad-dev"
+        heroTag: "اقفز • اجمع العملات • واصمد",
+        heroDesc: "لعبة أركيد برسوميات دفترية مرحة حيث تتحكم بكرة حجرية لتجاوز المنصات وجمع العملات وتحقيق أعلى مسافة على هاتفك.",
+        downloadBtn: "تحميل APK للأندرويد",
+        repoBtn: "صفحة GitHub",
+        shotsTitle: "لقطات من اللعبة",
+        stonesTitle: "شخصيات الكرات والأحجار",
+        stone1: "Pebble",
+        stone2: "Mossy Rock",
+        stone3: "Red Brick",
+        stone4: "Ice Stone",
+        detailsTitle: "التفاصيل والتوافق",
+        archLabel: "معمارية المعالج (ABI)",
+        archVal: "متوافق مع 32-bit و 64-bit",
+        archBadge: "32-bit + 64-bit",
+        osLabel: "نظام التشغيل المطلوب",
+        osVal: "Android 6.0 أو أحدث",
+        osBadge: "Android 6.0+",
+        formatLabel: "صيغة التثبيت والمنصة",
+        formatVal: "ملف APK مباشر • أندرويد",
+        formatBadge: "Arcade • APK",
+        devLabel: "المطور",
+        devBadge: "Stone Sphere",
+        footerText: "Stone Sphere — صنع بكل شغف بواسطة merad-dev"
       },
       en: {
         dir: "ltr",
         btn: "العربية",
-        heroDesc: "An Android arcade game focused on precision, balance, and skill. Control the stone sphere and overcome obstacles in a smooth mobile experience.",
-        downloadBtn: "Download for Android (APK)",
-        repoBtn: "View on GitHub",
+        heroTag: "Jump • Collect Coins • Survive",
+        heroDesc: "A playful doodle arcade game where you bounce a stone sphere across platforms, collect coins, and chase your best distance.",
+        downloadBtn: "Download Android APK",
+        repoBtn: "GitHub Repo",
         shotsTitle: "In-Game Screenshots",
-        detailsTitle: "Game Details",
-        platLabel: "Platform",
-        platVal: "Android",
-        verLabel: "Download",
-        verVal: "Direct APK via GitHub Releases",
-        footerText: "© stone-sphere — Developed by merad-dev"
+        stonesTitle: "Stone Characters",
+        stone1: "Pebble",
+        stone2: "Mossy Rock",
+        stone3: "Red Brick",
+        stone4: "Ice Stone",
+        detailsTitle: "Details & Compatibility",
+        archLabel: "Processor Architecture",
+        archVal: "Compatible with 32-bit & 64-bit",
+        archBadge: "32-bit + 64-bit",
+        osLabel: "Required OS",
+        osVal: "Android 6.0 or higher",
+        osBadge: "Android 6.0+",
+        formatLabel: "Package & Platform",
+        formatVal: "Direct APK • Android",
+        formatBadge: "Arcade • APK",
+        devLabel: "Developer",
+        devBadge: "Stone Sphere",
+        footerText: "Stone Sphere — Made by merad-dev"
       }
     };
 
-    let currentLang = "ar";
+    let lang = "ar";
 
     function toggleLang() {
-      currentLang = currentLang === "ar" ? "en" : "ar";
-      const t = content[currentLang];
-      document.documentElement.lang = currentLang;
+      lang = lang === "ar" ? "en" : "ar";
+      const t = i18n[lang];
+      document.documentElement.lang = lang;
       document.documentElement.dir = t.dir;
       document.getElementById("langToggle").textContent = t.btn;
+      document.getElementById("heroTag").textContent = t.heroTag;
       document.getElementById("heroDesc").textContent = t.heroDesc;
       document.getElementById("downloadBtn").textContent = t.downloadBtn;
       document.getElementById("repoBtn").textContent = t.repoBtn;
       document.getElementById("shotsTitle").textContent = t.shotsTitle;
+      document.getElementById("stonesTitle").textContent = t.stonesTitle;
+      document.getElementById("stone1").textContent = t.stone1;
+      document.getElementById("stone2").textContent = t.stone2;
+      document.getElementById("stone3").textContent = t.stone3;
+      document.getElementById("stone4").textContent = t.stone4;
       document.getElementById("detailsTitle").textContent = t.detailsTitle;
-      document.getElementById("platLabel").textContent = t.platLabel;
-      document.getElementById("platVal").textContent = t.platVal;
-      document.getElementById("verLabel").textContent = t.verLabel;
-      document.getElementById("verVal").textContent = t.verVal;
+      document.getElementById("archLabel").textContent = t.archLabel;
+      document.getElementById("archVal").textContent = t.archVal;
+      document.getElementById("archBadge").textContent = t.archBadge;
+      document.getElementById("osLabel").textContent = t.osLabel;
+      document.getElementById("osVal").textContent = t.osVal;
+      document.getElementById("osBadge").textContent = t.osBadge;
+      document.getElementById("formatLabel").textContent = t.formatLabel;
+      document.getElementById("formatVal").textContent = t.formatVal;
+      document.getElementById("formatBadge").textContent = t.formatBadge;
+      document.getElementById("devLabel").textContent = t.devLabel;
+      document.getElementById("devBadge").textContent = t.devBadge;
       document.getElementById("footerText").textContent = t.footerText;
     }
   </script>
